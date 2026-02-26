@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>wayMaxOS</title>
+    <style>
+        .appsearch {
+            background-image: url("./images/app-search.png");
+            width: 300px;
+            height: 90px;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 100px;
+        }
+
+        #searchbar {
+            width: 150px;
+            height: 20px;
+            padding: 10px;
+            outline: 0;
+            border: 0;
+            transform: rotate(5deg);
+            font-size: large;
+            font-family: cursive;
+        }
+
+        .app {
+            display: none;
+            width: 30px; 
+            height: 30px;
+            margin: 10px; 
+        }
+
+        .apps {
+            float: right;
+            border: solid;
+        }
+
+        .window {
+                border: solid;
+                min-width: 300px;
+                max-width: 600px;
+                height: auto;
+                padding: 10px;
+                border-radius: 10px;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%); 
+                background-color: white;
+            }
+
+        @media (min-aspect-ratio : 16/9) {
+            .appSearchVid {
+                width: 100%;
+                height: auto;
+            }
+        }
+
+        @media (max-aspect-ratio : 16/9) {
+            .appSearchVid {
+                width: auto;
+                height: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- to-do: new bg animation-->
+    <video autoplay muted plays-inline class="appSearchVid" id="appSearchVid" style="position: absolute; right: 0; bottom: 0; z-index: -1;">
+        <source src="./images/Openin.mp4" type="video/mp4">
+    </video>
+
+    <!-- app search -->
+    <div id="showAppSearch" style="display: none;">
+        <div class="appsearch">
+            <input id="searchbar" type="text" placeholder="search"/><br/>
+        </div>
+        <button onclick="searchApp()" style="margin-left: 50px;  cursor: pointer;">Search</button>
+        <!-- to show all apps-->
+        <!--<div id="showAllApps" style="position: absolute;bottom: 0; right: 10%;">
+            <button id="showApps" onclick="showAllApps()">show apps</button>
+        </div>-->
+    </div>
+    <div id="appSearchBox" onclick="showAppSearch()" style=" display: none;border: solid;float: right; width: 100px; height: 50px; position: absolute; top: 33%; right: 10px; border: solid;"></div>
+
+    <!-- display apps-->
+    <!-- to-do: app icons-->
+    <div class="apps" id="apps" style="display: none;">
+        <div id="langdoro" class="app" style=" background-color: black; display: none; cursor: pointer;"></div>
+        <div id="faultycalc" class="app" style=" background-color:brown; display: none; cursor: pointer;"></div>
+    </div>  
+    <div id="notapp" style="display: flex; justify-content: space-around;"></div>
+
+    <!-- to show images-->
+    <!--div id="imgdisplay" onclick="getImg()" style="border: solid black; height: 300px; width: 300px; margin-top: 30px;"></div-->
+
+    <!-- apps content-->
+     <!-- 1.langdoro-->
+    <div class="window" id="langdoroContent" style="display: none;">
+        <button id="langdorocloseBtn" style="width: 30px; height: 30px; cursor: pointer;">X</button><br/>
+        <div id="langLore"> You see,  I fall for every language too easily. So, trynna find one that plucks the strings of the bones.</p>
+        Can you help me?</div><br/>
+        <div id="optionsBtn">
+            <button id="yes" onclick="moveFwd()">VAMOS!</button>
+            <!-- to-do: -->
+            <button id="no" onclick="booEm()">Nope</button>
+        </div>
+        <div id="inputField" style="display: none;">
+            <input type="number" id="inputBox"/><br/>
+            <button type="submit" id="numLangsSubmitBtn">Ok</button>
+        </div>
+        <div id="wannaBuds" style="display: none;">
+            <button id="sim" onclick="reply1()">Sim</button>
+            <button id="ara" onclick="reply2()">Ara</button>
+        </div>
+        <div id="alvida" style="display: none;">
+            <div id="simalvida" style="display: none;">
+                <button id="yeah" onclick="alvida()">Yeah!</button>
+            </div>
+            <div id="aralvida" style="display: none;">
+                <button id="ye" onclick="alvida()">Ye</button>
+            </div>
+        </div>
+        <div id="adios" style="display: none;">
+            <button onclick="sayAdios()">adios</button>
+        </div>
+        <!-- when said "nope" -->
+         <div id="gab" style="display: none;">
+            well..great?
+            [check the console]
+         </div>
+    </div>
+
+    <!-- 2. faulty calc-->
+    <div class="window" id="faultycalcContent" style="display: none;">
+        <button id="faultycalccloseBtn">X</button>
+        <div class="calculator" style="border: solid black; width: 200px; height: 200px; display: grid; justify-content: space-around;">
+            <input type="text" id="calcInputBox" disabled><br/>
+            <div>
+                <button class="calcBtn">1</button>
+                <button class="calcBtn">2</button>
+                <button class="calcBtn">3</button>
+                <button class="calcBtn">+</button>
+            </div>
+
+            <div>
+                <button class="calcBtn">4</button>
+                <button class="calcBtn">5</button>
+                <button class="calcBtn">6</button>
+                <button class="calcBtn">-</button>
+            </div>
+
+            <div>
+                <button class="calcBtn">7</button>
+                <button class="calcBtn">8</button>
+                <button class="calcBtn">9</button>
+                <button class="calcBtn">*</button>
+            </div>
+
+            <div>
+                <button class="calcBtn">AC</button>
+                <button class="calcBtn">0</button>
+                <button class="calcBtn">/</button>
+                <button class="calcBtn">=</button>
+            </div>
+        </div>
+    </div>
+
+<script src="./js/showappsearch.js"></script>
+<script src="./js/app.js"></script>
+<script src="./js/openapp.js"></script>
+<script src="./js/langdoro.js"></script>
+<script src="./js/calc.js"></script>
+</body>
+</html>
