@@ -67,16 +67,8 @@ function booEm() {
         setTimeout(() => {
                 document.getElementById("langdoroContent").style.display = 'none'
         },1000)
+        document.getElementById('booVid').style.display = 'block'
+        setTimeout(() => {
+                document.getElementById('booVid').style.display = 'none'
+        },5000)
 }
-
-
-//to-do: add reaction drawing for user input num_langs
-/*
-function getImg () {
-        let imgDisplay = document.getElementById('imgdisplay');
-        console.log("changing img!")
-        let img = document.createElement('img')
-        img.src = 'url(../images/app-search.png)';
-        console.log(img.src)
-        imgDisplay.style.backgroundImage = 'url(../images/app-search.png)' ;
-}*/
