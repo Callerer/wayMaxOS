@@ -9,4 +9,7 @@ function openApp(app) {
     }
     
 openApp("langdoro");
+
 openApp("faultycalc");
+
+openApp("agenda")
