@@ -55,6 +55,11 @@
                 background-color: white;
             }
 
+
+        #langdoroContent {
+            transform: rotate(6deg);
+        }
+        
         @media (min-aspect-ratio : 16/9) {
             .appSearchVid {
                 width: 100%;
@@ -68,6 +73,20 @@
                 height: 100%;
             }
         }
+        @media (min-aspect-ratio : 16/9) {
+            .booVid {
+                width: 100%;
+                height: auto;
+            }
+        }
+
+        @media (max-aspect-ratio : 16/9) {
+            .booVid {
+                width: auto;
+                height: 100%;
+            }
+        }  
+        
     </style>
 </head>
 <body>
@@ -92,13 +111,17 @@
     <!-- display apps-->
     <!-- to-do: app icons-->
     <div class="apps" id="apps" style="display: none;">
-        <div id="langdoro" class="app" style=" background-color: black; display: none; cursor: pointer;"></div>
-        <div id="faultycalc" class="app" style=" background-color:brown; display: none; cursor: pointer;"></div>
+        <div id="langdoro" class="app" style=" background-color:rgb(215, 219, 219); display: none; cursor: pointer;">
+            <div style="border-radius: 30px; border: solid; display: flex; justify-content: center; font-size: small; font-family: 'Courier New', Courier, monospace;">Msg</div>
+        </div>
+        <div id="faultycalc" class="app" style=" background-color:rgb(231, 226, 226); display: none; cursor: pointer;">
+            <div style="border-radius: 30px; padding: 3px; border: solid; display: flex; justify-content: center; font-size: smaller; font-family: 'Courier New', Courier, monospace;">calc</div>
+        </div>
+        <div id="agenda" class="app" style=" background-color:rgb(121, 117, 117); display: none; cursor: pointer;">
+            <div style="border-radius: 5px; padding: 3px; border: solid; display: flex; justify-content: center; font-size: 3px; font-family: 'Courier New', Courier, monospace;">agenda</div>
+        </div>
     </div>  
     <div id="notapp" style="display: flex; justify-content: space-around;"></div>
-
-    <!-- to show images-->
-    <!--div id="imgdisplay" onclick="getImg()" style="border: solid black; height: 300px; width: 300px; margin-top: 30px;"></div-->
 
     <!-- apps content-->
      <!-- 1.langdoro-->
@@ -108,7 +131,6 @@
         Can you help me?</div><br/>
         <div id="optionsBtn">
             <button id="yes" onclick="moveFwd()">VAMOS!</button>
-            <!-- to-do: -->
             <button id="no" onclick="booEm()">Nope</button>
         </div>
         <div id="inputField" style="display: none;">
@@ -128,14 +150,16 @@
             </div>
         </div>
         <div id="adios" style="display: none;">
-            <button onclick="sayAdios()">adios</button>
+            <button onclick="sayAdios()">idk..<br/> adios</button>
         </div>
         <!-- when said "nope" -->
-         <div id="gab" style="display: none;">
-            well..great?
-            [check the console]
-         </div>
+        <div id="gab" style="display: none;">
+            <p>well, alright...</p>
+        </div>
     </div>
+    <video autoplay muted plays-inline class="booVid" id="booVid" style="display:none; position: absolute; right: 0; bottom: 0; z-index: -1;">
+            <source src="./images/U_gon_regret_this_mate.mp4" type="video/mp4">
+    </video>
 
     <!-- 2. faulty calc-->
     <div class="window" id="faultycalcContent" style="display: none;">
@@ -172,10 +196,30 @@
         </div>
     </div>
 
+    <!-- 3.Agenda -->
+    <div class="window" id="agendaContent" style="display: none;">
+        <button id="agendacloseBtn" style="width: 30px; height: 30px; border-radius: 0 0 12px 0; cursor: pointer;">X</button><br/>
+        <div id ="unlockAgenda">
+            <p>What's Agenda?</p>
+            <input id="guessAgenda" type="text"/> 
+            <button  type="submit" onclick="checkAgenda()">Ofc</button> 
+        </div>
+        <!-- if right guess -->
+        <div id="theAgenda" style="display: none;">
+            <img src="./images/agenda.png"/>
+        </div>
+        <!-- if guessed wrong-->
+        <p id="nope" style="display: none;">Nope. <br/><br/> [Hint: change mobile's system language to Brazilian n check out names of Google's apps]</p>
+    </div>
+
+
+    
 <script src="./js/showappsearch.js"></script>
 <script src="./js/app.js"></script>
 <script src="./js/openapp.js"></script>
 <script src="./js/langdoro.js"></script>
 <script src="./js/calc.js"></script>
+<script src="./js/agenda.js"></script>
 </body>
+
 </html>
