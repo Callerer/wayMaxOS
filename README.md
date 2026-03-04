@@ -2,6 +2,8 @@
 a wip webOS for flavortown's webOS sidequest. 
 
 
+# PLEASE FIRST TRY EXPLORING. WALKTHROUGH IS GIVEN BELOW TO HELP YOU OUT INCASE IT BECOMES CONFUSING. GNATSING!
+
 ## walkthrough
 - the welcome page is a cool animated intro (no password)
 - when you click "click here to enter", you would be entering in but wont see any of the apps or the app search bar. The hint: the character in the animation is pointing at something that looks like a "magnifying glass". Hmm interesting, but dont click it unless you want that character steal all your icecreams.
